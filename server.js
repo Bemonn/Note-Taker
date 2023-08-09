@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 
@@ -26,9 +27,22 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-    const newNote = req.body;
-    //Logic to save newNote to db.json should go here
-    res.json(newNote);
+    const newNote = { ...req.body, id: uuidv4() };
+
+    // Read the current notes from db.json
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) throw err;
+        const notes = JSON.parse(data);
+
+        // Add the new note to the list
+        notes.push(newNote);
+
+        // Write the updated list of notes back to db.json
+        fs.writeFile('./db/db.json', JSON.stringify(notes, null, 2), (err) => {
+            if (err) throw err;
+            res.json(newNote);
+        });
+    });
 });
 
 app.get('*', (req, res) => {
