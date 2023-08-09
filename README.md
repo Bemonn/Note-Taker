@@ -23,9 +23,13 @@
   
   ## Usage
   The user will be given a prompt to take them from the landing page to the notes page, on this page your saved notes will appear on the left side of the screen whilst the note you're currently looking at/writing will appear on the right. 
+
   ![notes1](https://github.com/Bemonn/Note-Taker/assets/132788160/5050f314-50f3-4869-8aa9-5bb5b3893df2) 
+
   There is a save function in the top right of the screen to save notes.
+
   ![notes2](https://github.com/Bemonn/Note-Taker/assets/132788160/a76463ab-5dd9-414d-9928-2b0e14dcd36d) 
+  
   ## Contributing
   Refer to questions for contact details
 
